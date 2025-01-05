@@ -47,12 +47,13 @@ public class GFXManager : MonoBehaviour
         }
     }
     
-    public void changeEnemySprites(string enemyAction)
+    public void changeEnemySprites(string enemyAction, bool charging)
     {
         //Triggers the necessary animations as correctalted by the action
         e_anim.SetBool("Left", enemyAction.Contains("lean left"));
         e_anim.SetBool("Duck", enemyAction.Contains("duck"));
         e_anim.SetBool("Right", enemyAction.Contains("lean right"));
+        e_anim.SetBool("Charge", charging);
 
         //Switches to the necessary sprite as correctalted by the action
         switch (enemyAction)

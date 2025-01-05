@@ -45,31 +45,28 @@ public class Player : MonoBehaviour
         { "TTTTT", "ducking,block" },
         { "FFTTT", "lean right, right hook" }
     };
-    
-    //Records the action taken previously by the player
-    private string prevAction;
 
 
-    void FixedUpdate()
+    public GameObject warning;
+
+
+    void Update()
     {
-        FingerPositions();
+        //FingerPositions();
     }
 
     public string FingerPositions()
     {
-        //Recieves the data
-        string action = actDic[uDPReceive.data];
-
-        //Cancels player action if action and previous action are the same and both an attack move
-        //Prevents attacks from running each frame
-        if ((action.Contains("left hook")|| action.Contains("right hook") 
-            || action.Contains("hammer")) && action == prevAction)
+        string action = "FFFFF";
+        //Receives the data
+        try
         {
-            return "none";
+            action = actDic[uDPReceive.data];
+            warning.SetActive(false);
         }
-
-        // Assigns previous action the current action
-        prevAction = action;
+        catch {
+            warning.SetActive(true);
+        }
 
         return action;
     }
