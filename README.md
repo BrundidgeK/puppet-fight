@@ -12,11 +12,8 @@ Unity (version 2021.3 or newer)
 Python (version 3.7 or newer)
 Python Dependencies:
 OpenCV (for camera and image processing)
-Mediapipe (for finger tracking)
-PySerial (for communication with Unity)
-Unity Packages:
-Unity's Input System (for character controls)
-Unity's networking system (if playing multiplayer)
+Mediapipe & cvzone (for finger tracking)
+socket (for Unity communication)
 Installation
 Follow these steps to set up Puppet Fight on your local machine:
 
@@ -28,12 +25,11 @@ git clone https://github.com/BrundidgeK/puppet-fight.git
 Install required Python libraries:
 
 ``` bash
-pip install opencv-python mediapipe pyserial
+pip install opencv-python mediapipe cvzone
 ```
 3. Unity Setup:
 Open Unity Hub, click on Add Project, and select the cloned puppet-fight directory.
 Make sure all Unity dependencies are correctly installed (the project should prompt you if something is missing).
-Verify that the Input System and necessary packages are installed via the Unity Package Manager.
 4. Connect Python and Unity:
 The Python script handles the finger tracking and sends the data to Unity via a socket or serial communication.
 Make sure the Python script and Unity are able to communicate by running the Python script first, then starting the game in Unity.
@@ -55,7 +51,7 @@ Start the Finger Tracking:
 
 Run the Python finger tracking script:
 ``` Bash
-python finger_tracking.py
+python HandPoseTracker.py
 ```
 Start the Game in Unity:
 
@@ -65,7 +61,7 @@ Puppet Fight uses hand gestures to control the character’s movements and attac
 
 Punch: Close your thumb or pinkie finger
 
-Block: Close both thumg and pinkie
+Block: Close both thumb and pinkie
 
 Duck: Close both the index and ring fingers
 
